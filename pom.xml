@@ -31,7 +31,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
@@ -45,7 +45,7 @@
 		<dependency>
 			<groupId>io.github.majusko</groupId>
 			<artifactId>grpc-jwt-spring-boot-starter</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 		<dependency>
@@ -63,6 +63,9 @@
 
 	<build>
 
+		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+
 		<extensions>
 			<extension>
 				<groupId>kr.motd.maven</groupId>
@@ -71,8 +74,6 @@
 			</extension>
 		</extensions>
 
-		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 		<plugins>
 
 			<plugin>
@@ -87,7 +88,7 @@
 					<pluginArtifact>
 						io.grpc:protoc-gen-grpc-java:1.4.0:exe:${os.detected.classifier}
 					</pluginArtifact>
-					<protoSourceRoot>${basedir}/src/test/proto</protoSourceRoot>
+					<protoSourceRoot>${basedir}/src/main/proto</protoSourceRoot>
 				</configuration>
 				<executions>
 					<execution>
@@ -121,6 +122,32 @@
 						<version>${kotlin.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.3</version>
+				<configuration>
+					<excludes>
+						<exclude>**/*Application.*</exclude>
+						<exclude>**/proto/**/*</exclude>
+						<exclude>**/model/**/*</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

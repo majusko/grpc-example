@@ -1,0 +1,23 @@
+syntax = "proto3";
+package io.github.majusko.grpc.example.proto;
+
+import "google/protobuf/empty.proto";
+
+service MyAuthService {
+    rpc Login (LoginRequest) returns (Token);
+    rpc GetProfile (google.protobuf.Empty) returns (Profile);
+    rpc Update (Profile) returns (google.protobuf.Empty);
+}
+
+message Profile {
+    string userId = 1;
+    string name = 2;
+}
+
+message LoginRequest {
+    string userId = 1;
+}
+
+message Token {
+    string token = 1;
+}
