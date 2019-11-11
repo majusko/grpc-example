@@ -45,6 +45,12 @@
 		<dependency>
 			<groupId>io.github.majusko</groupId>
 			<artifactId>grpc-jwt-spring-boot-starter</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.majusko</groupId>
+			<artifactId>grpc-apm-spring-boot-starter</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 

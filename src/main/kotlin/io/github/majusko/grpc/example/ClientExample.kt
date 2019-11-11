@@ -1,6 +1,7 @@
 package io.github.majusko.grpc.example
 
 import com.google.protobuf.Empty
+import io.github.majusko.grpc.apm.interceptor.ApmClientInterceptor
 import io.github.majusko.grpc.example.proto.Example
 import io.github.majusko.grpc.example.proto.MyAuthServiceGrpc
 import io.github.majusko.grpc.jwt.interceptor.AuthClientInterceptor
@@ -16,7 +17,10 @@ import java.util.*
 import javax.annotation.PostConstruct
 
 @Component
-class ClientExample(private val authClientInterceptor: AuthClientInterceptor) {
+class ClientExample(
+    private val authClientInterceptor: AuthClientInterceptor,
+    private val apmClientInterceptor: ApmClientInterceptor
+) {
 
     private lateinit var channel: Channel
 
@@ -27,7 +31,7 @@ class ClientExample(private val authClientInterceptor: AuthClientInterceptor) {
     private fun initClient() {
         val channel = ManagedChannelBuilder.forTarget(target).usePlaintext().build();
 
-        this.channel = ClientInterceptors.intercept(channel, authClientInterceptor)
+        this.channel = ClientInterceptors.intercept(channel, authClientInterceptor, apmClientInterceptor)
     }
 
     fun loginAndUpdateName(name: String): Example.Profile {
