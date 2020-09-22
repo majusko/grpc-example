@@ -21,13 +21,6 @@
 		<protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -45,13 +38,13 @@
 		<dependency>
 			<groupId>io.github.majusko</groupId>
 			<artifactId>grpc-jwt-spring-boot-starter</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.7</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.github.majusko</groupId>
 			<artifactId>grpc-apm-spring-boot-starter</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.4</version>
 		</dependency>
 
 		<dependency>
