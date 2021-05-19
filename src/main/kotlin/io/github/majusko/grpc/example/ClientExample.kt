@@ -4,8 +4,8 @@ import com.google.protobuf.Empty
 import io.github.majusko.grpc.apm.interceptor.ApmClientInterceptor
 import io.github.majusko.grpc.example.proto.Example
 import io.github.majusko.grpc.example.proto.MyAuthServiceGrpc
+import io.github.majusko.grpc.jwt.data.GrpcHeader
 import io.github.majusko.grpc.jwt.interceptor.AuthClientInterceptor
-import io.github.majusko.grpc.jwt.interceptor.GrpcHeader
 import io.grpc.Channel
 import io.grpc.ClientInterceptors
 import io.grpc.ManagedChannelBuilder

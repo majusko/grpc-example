@@ -4,7 +4,7 @@ import com.google.protobuf.Empty
 import io.github.majusko.grpc.example.proto.Example
 import io.github.majusko.grpc.example.proto.MyAuthServiceGrpc
 import io.github.majusko.grpc.jwt.annotation.Allow
-import io.github.majusko.grpc.jwt.interceptor.GrpcJwtContext
+import io.github.majusko.grpc.jwt.data.GrpcJwtContext
 import io.github.majusko.grpc.jwt.service.GrpcRole
 import io.github.majusko.grpc.jwt.service.JwtService
 import io.github.majusko.grpc.jwt.service.dto.JwtData
